@@ -1,6 +1,7 @@
-package Excel;
+package main.java.Excel;
 
-import Parameters.Parameters;
+
+import main.java.Parameters.Parameters;
 
 public class ExcelPrinter
 {
@@ -11,5 +12,9 @@ public class ExcelPrinter
 	{
 		this.parameters = parameters;
 		this.excelParser = excelParser;
+	}
+	public void print()
+	{
+	
 	}
 }

@@ -1,4 +1,4 @@
-package Parameters;
+package main.java.Parameters;
 
 public enum PaperSize
 {
