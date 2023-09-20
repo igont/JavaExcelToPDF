@@ -5,13 +5,13 @@ public class Parameters
 	private float height;
 	private float width;
 	
-	public void setSize(float height, float width)
+	public void setMillimeterSize(float height, float width)
 	{
-		this.height = height;
-		this.width = width;
+		this.height = (float) (height * 72 / 25.4);
+		this.width = (float) (width * 72 / 25.4);
 	}
 	
-	public void setSize(PaperSize size)
+	public void setMillimeterSize(PaperSize size)
 	{
 		switch(size)
 		{
@@ -52,6 +52,8 @@ public class Parameters
 				width = 105;
 			}
 		}
+		height = (float) (height * 72 / 25.4);
+		width = (float) (width * 72 / 25.4);
 	}
 	
 	private float marginLeft;
@@ -67,7 +69,7 @@ public class Parameters
 		marginDown = all;
 	}
 	
-	public void setMargins(float marginLeft, float marginRight, float marginUp, float marginDown)
+	public void setMillimeterMargins(float marginLeft, float marginRight, float marginUp, float marginDown)
 	{
 		this.marginLeft = marginLeft;
 		this.marginRight = marginRight;
@@ -98,26 +100,49 @@ public class Parameters
 		width = f;
 	}
 	
-	private float scale;
+	private float printScale = 100;
 	
-	public void setScale(float scale)
+	public void setPrintScale(float printScale)
 	{
-		this.scale = scale;
+		this.printScale = printScale;
 	}
 	
 	public void fitHorizontal(float horizontalSize)
 	{
-		scale = fit(width - marginRight - marginLeft, horizontalSize);
+		printScale = fit(width - marginRight - marginLeft, horizontalSize);
 	}
 	
 	public void fitVertical(float verticalSize)
 	{
-		scale = fit(height - marginDown - marginUp, verticalSize);
+		printScale = fit(height - marginDown - marginUp, verticalSize);
 	}
 	
 	private float fit(float paperSize, float realSize)
 	{
 		return paperSize / realSize;
+	}
+	
+	private String pathToSave;
+	private String pathReadFrom;
+	
+	public String getPathToSave()
+	{
+		return pathToSave;
+	}
+	
+	public void setPathToSave(String pathToSave)
+	{
+		this.pathToSave = pathToSave;
+	}
+	
+	public String getPathReadFrom()
+	{
+		return pathReadFrom;
+	}
+	
+	public void setPathReadFrom(String pathReadFrom)
+	{
+		this.pathReadFrom = pathReadFrom;
 	}
 	
 	public float getHeight()
@@ -155,8 +180,8 @@ public class Parameters
 		return albumOrientation;
 	}
 	
-	public float getScale()
+	public float getPrintScale()
 	{
-		return scale;
+		return printScale;
 	}
 }
