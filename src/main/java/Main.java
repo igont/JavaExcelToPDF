@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Main
 {
 	public static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) throws IOException
 	{
 		Parameters parameters = new Parameters();
@@ -17,13 +18,13 @@ public class Main
 		parameters.setPathToSave("C:/Users/Igor/Desktop/Тест.pdf");
 		parameters.setPathReadFrom("C:/Users/Igor/Desktop/Тест.xlsx");
 		
-		parameters.setMargins(5);
+		parameters.setMillimeterMargins(20f, 5f, 5f, 5f);
 		parameters.setMillimeterSize(PaperSize.A4);
 		parameters.setAlbumOrientation(false);
 		
 		ExcelPrinter excelPrinter = new ExcelPrinter(parameters);
 		
 		excelPrinter.print();
-		sc.nextLine();
+		//sc.nextLine();
 	}
 }

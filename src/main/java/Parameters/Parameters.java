@@ -61,8 +61,9 @@ public class Parameters
 	private float marginUp;
 	private float marginDown;
 	
-	public void setMargins(int all)
+	public void setMillimeterMargins(float all)
 	{
+		all *= (float) (72 / 25.4);
 		marginLeft = all;
 		marginRight = all;
 		marginUp = all;
@@ -71,10 +72,10 @@ public class Parameters
 	
 	public void setMillimeterMargins(float marginLeft, float marginRight, float marginUp, float marginDown)
 	{
-		this.marginLeft = marginLeft;
-		this.marginRight = marginRight;
-		this.marginUp = marginUp;
-		this.marginDown = marginDown;
+		this.marginLeft = (float) (marginLeft * 72 / 25.4);
+		this.marginRight = (float) (marginRight * 72 / 25.4);
+		this.marginUp = (float) (marginUp * 72 / 25.4);
+		this.marginDown = (float) (marginDown * 72 / 25.4);
 	}
 	
 	private boolean albumOrientation;
@@ -183,5 +184,15 @@ public class Parameters
 	public float getPrintScale()
 	{
 		return printScale;
+	}
+	
+	public float getActiveHeight()
+	{
+		return height - marginDown - marginUp;
+	}
+	
+	public float getActiveWidth()
+	{
+		return width - marginRight - marginLeft;
 	}
 }

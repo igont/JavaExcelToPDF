@@ -36,7 +36,15 @@ public class ExcelParser
 		}
 	}
 	
-	private String readDifferentCellTypes(XSSFCell cell, CellType cellType)
+	public String readDataFromCell(int row, int column) // Starts from 0 by both axes
+	{
+		XSSFCell cell = (XSSFCell) getCell(row, column);
+		if(cell == null) return null;
+		
+		return readDifferentCellTypes(cell, cell.getCellType());
+	}
+	
+	public String readDifferentCellTypes(XSSFCell cell, CellType cellType)
 	{
 		switch(cellType)
 		{
